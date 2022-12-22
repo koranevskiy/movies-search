@@ -45,8 +45,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/gravity_falls.png",
+      "keyframe": "keyframe/gravity_falls.png"
     },
     {
       "type": "tvseries",
@@ -85,8 +85,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/gravity_falls.png",
+      "keyframe": "keyframe/gravity_falls.png"
     },
     {
       "type": "tvseries",
@@ -125,8 +125,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/gravity_falls.png",
+      "keyframe": "keyframe/gravity_falls.png"
     }
   ]
 }

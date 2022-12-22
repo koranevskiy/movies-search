@@ -1,10 +1,10 @@
 {
   "backgrounds": [
     {
-      "url": "background/sherlok.png"
+      "url": "background/sherlok.jpg"
     },
     {
-      "url": "background/stranger_things.png"
+      "url": "background/stranger_things.jpg"
     }
   ],
   "items": [
@@ -19,8 +19,8 @@
       "num_seasons": 5,
       "min_age": 16,
       "genres": ["horror", "sci-fi", "fantasy", "thriller", "drama", "detective"],
-      "poster": "poster/stranger_things.png",
-      "keyframe": "keyframe/stranger_things.png"
+      "poster": "poster/stranger_things.jpg",
+      "keyframe": "keyframe/stranger_things.jpg"
     },
     {
       "type": "tvseries",
@@ -32,8 +32,8 @@
       "num_seasons": 6,
       "min_age": 18,
       "genres": ["fantasy", "thriller", "drama"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/handmaids_tale.jpg",
+      "keyframe": "keyframe/handmaids_tale.jpg"
     },
     {
       "type": "tvseries",
@@ -45,8 +45,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/gravity_falls.png",
-      "keyframe": "keyframe/gravity_falls.png"
+      "poster": "poster/gravity_falls.jpg",
+      "keyframe": "keyframe/gravity_falls.jpg"
     },
     {
       "type": "tvseries",
@@ -59,8 +59,8 @@
       "num_seasons": 5,
       "min_age": 16,
       "genres": ["horror", "sci-fi", "fantasy", "thriller", "drama", "detective"],
-      "poster": "poster/stranger_things.png",
-      "keyframe": "keyframe/stranger_things.png"
+      "poster": "poster/stranger_things.jpg",
+      "keyframe": "keyframe/stranger_things.jpg"
     },
     {
       "type": "tvseries",
@@ -72,8 +72,8 @@
       "num_seasons": 6,
       "min_age": 18,
       "genres": ["fantasy", "thriller", "drama"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/handmaids_tale.jpg",
+      "keyframe": "keyframe/handmaids_tale.jpg"
     },
     {
       "type": "tvseries",
@@ -85,8 +85,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/gravity_falls.png",
-      "keyframe": "keyframe/gravity_falls.png"
+      "poster": "poster/gravity_falls.jpg",
+      "keyframe": "keyframe/gravity_falls.jpg"
     },
     {
       "type": "tvseries",
@@ -99,8 +99,8 @@
       "num_seasons": 5,
       "min_age": 16,
       "genres": ["horror", "sci-fi", "fantasy", "thriller", "drama", "detective"],
-      "poster": "poster/stranger_things.png",
-      "keyframe": "keyframe/stranger_things.png"
+      "poster": "poster/stranger_things.jpg",
+      "keyframe": "keyframe/stranger_things.jpg"
     },
     {
       "type": "tvseries",
@@ -112,8 +112,8 @@
       "num_seasons": 6,
       "min_age": 18,
       "genres": ["fantasy", "thriller", "drama"],
-      "poster": "poster/handmaids_tale.png",
-      "keyframe": "keyframe/handmaids_tale.png"
+      "poster": "poster/handmaids_tale.jpg",
+      "keyframe": "keyframe/handmaids_tale.jpg"
     },
     {
       "type": "tvseries",
@@ -125,8 +125,8 @@
       "num_seasons": 2,
       "min_age": 12,
       "genres": ["cartoon", "comedy", "detective", "adventure", "family", "fantasy"],
-      "poster": "poster/gravity_falls.png",
-      "keyframe": "keyframe/gravity_falls.png"
+      "poster": "poster/gravity_falls.jpg",
+      "keyframe": "keyframe/gravity_falls.jpg"
     }
   ]
 }

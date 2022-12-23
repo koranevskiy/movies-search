@@ -4,8 +4,7 @@
 
 ## Файлы
 
-В `mock/search_page.png` можно ознакомиться с макетом, подготовленным дизайнером.
-В `/api/` находятся файлы, которые имитируют ответы бэкенда.
+C макетом страницы, подготовленным дизайнером, можно ознакомиться в [Figma](https://www.figma.com/file/Y0Sco27UBnYBNKRgE1sAiv/NetUP-Frontend-Task?node-id=0%3A1&t=nE9KbWGUIEKuF1IY-1) или в [`mock/search_page.png`](mock/search_page.png). В `/api/` находятся файлы, которые имитируют ответы бэкенда.
 
 ## API
 

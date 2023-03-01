@@ -1,7 +1,13 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { Routing } from './app/routing'
 
 const App: React.FC = () => {
-  return <h1 style={{ textAlign: 'center' }}>App asd</h1>
+  return (
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
+  )
 }
 
 export default App

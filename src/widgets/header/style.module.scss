@@ -1,0 +1,31 @@
+@import 'src/shared/styles/functions';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 toRem(72);
+  background-color: rgba(var(--bg-alpha), 0.1);
+  backdrop-filter: blur(toRem(12.5));
+  .btn {
+    padding: toRem(13) toRem(24);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: toRem(56);
+  }
+  .userBtn {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: toRem(8);
+      height: toRem(8);
+      border-radius: 50%;
+      background-color: var(--green-light);
+      top: toRem(9);
+      right: toRem(7);
+    }
+  }
+}

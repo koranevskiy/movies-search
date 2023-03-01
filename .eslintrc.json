@@ -18,5 +18,6 @@
     }
   },
   "rules": {
-  }
+  },
+  "ignorePatterns": ["**/*.scss"]
 }

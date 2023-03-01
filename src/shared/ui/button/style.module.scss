@@ -1,0 +1,41 @@
+@import 'src/shared/styles/functions';
+
+.btn {
+  color: var(--text-light);
+  font-weight: 400;
+  font-size: toRem(24);
+  line-height: convertLineHeight(24, 30);
+  transition: all 300ms ease-out;
+  padding: toRem(8);
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  &:hover:enabled {
+    background-color: rgba(var(--bg-alpha), 0.1);
+    border-radius: toRem(4);
+    svg {
+      stroke: rgba(var(--bg-alpha), 0.1);
+    }
+  }
+
+  &:disabled {
+    color: var(--text-gray-dark);
+    svg,
+    path {
+      stroke: var(--text-gray-dark);
+    }
+    cursor: default;
+  }
+}
+
+.active {
+  background-color: rgba(var(--bg-alpha), 0.1);
+  border-radius: toRem(4);
+  color: var(--attribute-green);
+  svg,
+  path {
+    stroke: var(--attribute-green);
+  }
+}

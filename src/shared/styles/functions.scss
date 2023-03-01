@@ -1,0 +1,8 @@
+@function toRem($size) {
+  @return calc($size / 16 * 1rem);
+}
+
+@function convertLineHeight($fz, $lh) {
+  $ratioValue: calc($lh / $fz);
+  @return $ratioValue;
+}

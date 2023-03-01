@@ -1,0 +1,22 @@
+@import 'src/shared/styles/functions';
+
+.wrapper {
+  font-weight: 400;
+  font-size: toRem(24);
+  line-height: convertLineHeight(24, 30);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    gap: toRem(8);
+    padding: toRem(13) toRem(24);
+  }
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+}

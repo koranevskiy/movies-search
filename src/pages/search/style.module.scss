@@ -36,4 +36,13 @@
     justify-content: center;
     align-items: center;
   }
+  .movies {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-left: toRem(56);
+  }
+
+  .swiper {
+  }
 }

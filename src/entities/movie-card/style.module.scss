@@ -1,0 +1,105 @@
+@import 'src/shared/styles/functions';
+
+.wrapper {
+  max-width: toRem(368);
+  min-width: toRem(200);
+  display: flex;
+  flex-direction: column;
+  gap: toRem(16);
+
+  .banner {
+    position: relative;
+    height: toRem(208);
+    border-radius: toRem(4);
+    padding: toRem(8);
+    overflow: hidden;
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(var(--bg-alpha-primary), 0.5);
+    }
+
+    .attrsContainer {
+      display: flex;
+      align-items: center;
+      gap: toRem(16);
+      position: relative;
+      z-index: 2;
+    }
+
+    .attr {
+      font-weight: 400;
+      font-size: toRem(16);
+      line-height: convertLineHeight(16, 20);
+      color: var(--text-light);
+      padding: toRem(4) toRem(8);
+      background-color: var(--attribute-green);
+      display: flex;
+      align-items: center;
+      gap: toRem(10);
+      border-radius: toRem(4);
+    }
+
+    .attrNew {
+      background-color: var(--attribute-yellow);
+    }
+
+    .attrRate {
+      font-weight: 700;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(4);
+    .title {
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 500;
+      font-size: toRem(24);
+      line-height: convertLineHeight(24, 27.5);
+      color: var(--text-light);
+    }
+
+    .properties {
+      display: flex;
+      align-items: center;
+      font-size: toRem(20);
+      line-height: convertLineHeight(20, 25);
+      color: var(--text-gray);
+      gap: toRem(17);
+    }
+
+    .property {
+      position: relative;
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: toRem(22);
+        border: toRem(1) solid var(--text-gray);
+        transform: translateY(-50%);
+        top: 50%;
+        right: toRem(-9);
+      }
+    }
+
+    .geners {
+      font-size: toRem(20);
+      line-height: convertLineHeight(20, 25);
+      color: var(--text-light);
+    }
+  }
+}

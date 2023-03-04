@@ -1,7 +1,7 @@
 import { IAssets, IMovie } from './discover.interfaces'
 
 class DiscoverService {
-  private static readonly baseUrl = 'http://127.0.0.1:5173/'
+  private static readonly baseUrl = import.meta.env.VITE_API_URL
 
   static async getAssets(): Promise<IAssets> {
     const res = await fetch(`${DiscoverService.baseUrl}/api/discover`)

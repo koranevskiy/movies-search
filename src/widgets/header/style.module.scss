@@ -7,15 +7,21 @@
   padding: 0 toRem(72);
   background-color: rgba(var(--bg-alpha), 0.1);
   backdrop-filter: blur(toRem(12.5));
+  .buttons {
+    display: flex;
+    gap: toRem(32);
+  }
   .btn {
-    padding: toRem(13) toRem(24);
+    padding: toRem(13) toRem(16);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: toRem(56);
+    background-color: rgba(var(--bg-alpha), 0.35);
   }
   .userBtn {
     position: relative;
+    background-color: rgba(var(--bg-alpha), 0.1);
     &::before {
       content: '';
       position: absolute;

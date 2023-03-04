@@ -16,12 +16,13 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
   const hoverBackRef = useRef<HTMLDivElement>(null)
 
   const properties = [country, year, `${length / 60} min`, `${num_seasons} seasons`, `${min_age}+`]
+  const backdropStyles = isHovered ? `${styles.backdrop} ${styles.backOpacity}` : styles.backdrop
 
   return (
     <div className={styles.wrapper} ref={ref}>
       <div className={styles.banner}>
         <img src={poster} alt="Poster" className={styles.img} />
-        <div className={isHovered ? `${styles.backdrop} ${styles.backOpacity}` : styles.backdrop} />
+        <div className={backdropStyles} />
         <CSSTransition
           in={isHovered}
           timeout={600}

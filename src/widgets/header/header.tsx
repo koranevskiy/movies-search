@@ -13,7 +13,7 @@ const Header: React.FC = () => {
         <Logo />
       </div>
       <Navigation />
-      <div>
+      <div className={styles.buttons}>
         <Button className={styles.btn}>
           <SearchIcon />
         </Button>

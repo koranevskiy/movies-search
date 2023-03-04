@@ -87,4 +87,26 @@
       cursor: default;
     }
   }
+
+  .list {
+    position: absolute;
+    top: calc(100% + toRem(5));
+    left: 0;
+    font-weight: 400;
+    font-size: toRem(20);
+    color: var(--text-black);
+    background-color: var(--text-light);
+    width: 100%;
+    border-radius: toRem(8);
+    z-index: 100;
+  }
+  .listItem {
+    padding: toRem(10) toRem(20);
+    position: relative;
+    cursor: pointer;
+    transition: all ease 300ms;
+    &:hover {
+      background-color: rgba(var(--bg-alpha-primary), 0.1);
+    }
+  }
 }

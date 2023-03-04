@@ -18,9 +18,10 @@ const SearchPage: React.FC = () => {
     items: [],
   })
 
-  const [, setSuitableMovies] = useState<IMovie[]>([])
-  const [inputValue, setInputValue] = useState('')
+  const [suitableMovies, setSuitableMovies] = useState<IMovie[]>([])
   const [slidesPerView, setSlidesPerView] = useState(4)
+
+  const [isSearched, setIsSearched] = useState(false)
   const pageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -46,6 +47,8 @@ const SearchPage: React.FC = () => {
     }
   }, [])
 
+  const swiperMovies = isSearched ? suitableMovies : assets.items
+
   return (
     <div className={styles.wrapper} ref={pageRef}>
       <Header />
@@ -58,14 +61,18 @@ const SearchPage: React.FC = () => {
         <div className={styles.movieSearch}>
           <MovieSearch
             movies={assets.items}
-            setValue={setInputValue}
-            value={inputValue}
             setSuitableMovie={setSuitableMovies}
+            setIsSearched={setIsSearched}
           />
         </div>
-        <h2 className={styles.title}>In the spotlight</h2>
+        {isSearched || <h2 className={styles.title}>In the spotlight</h2>}
         <div className={styles.movies}>
-          {!!assets.items.length && (
+          {isSearched && (
+            <h2
+              className={`${styles.title} ${styles.searchedTitle}`}
+            >{`TV Shows (${swiperMovies.length})`}</h2>
+          )}
+          {!!swiperMovies.length && (
             <Swiper
               slidesPerView={slidesPerView}
               spaceBetween={16}
@@ -77,7 +84,7 @@ const SearchPage: React.FC = () => {
               className={styles.swiper}
               mousewheel
             >
-              {assets.items.map((movie) => (
+              {swiperMovies.map((movie) => (
                 <SwiperSlide key={movie.id}>
                   <MovieCard movie={movie} />
                 </SwiperSlide>

@@ -21,6 +21,7 @@
     align-items: center;
     gap: toRem(56);
   }
+
   .movieSearch {
     width: 100%;
     max-width: toRem(976);
@@ -35,6 +36,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .searchedTitle {
+    justify-content: flex-start;
+    margin-bottom: toRem(16);
   }
   .movies {
     position: relative;

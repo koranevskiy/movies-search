@@ -29,6 +29,11 @@
       bottom: 0;
       right: 0;
       background-color: rgba(var(--bg-alpha-primary), 0.5);
+      transition: background-color ease 600ms;
+    }
+
+    .backOpacity {
+      background-color: rgba(var(--bg-alpha-primary), 0.8);
     }
 
     .attrsContainer {
@@ -37,6 +42,13 @@
       gap: toRem(16);
       position: relative;
       z-index: 2;
+    }
+    .attrsContainerHover {
+      animation: attrsMove ease 600ms forwards;
+    }
+
+    .attrsContainerUnhover {
+      animation: attrsBounce ease 600ms forwards;
     }
 
     .attr {
@@ -58,6 +70,41 @@
 
     .attrRate {
       font-weight: 700;
+    }
+    .backdropHover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .backBounce {
+      animation: backdropBounce 600ms ease forwards;
+    }
+    .backUnhover {
+      animation: backdropUnhover 600ms ease forwards;
+    }
+    .btn {
+      outline: none;
+      cursor: pointer;
+      font-size: toRem(20);
+      line-height: convertLineHeight(20, 25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: toRem(10);
+      color: var(--text-gray-light);
+      border: toRem(1) solid var(--text-gray-light);
+      border-radius: toRem(4);
+      background-color: transparent;
+      padding: toRem(15.5) toRem(32);
+      transition: all ease 300ms;
+      &:hover {
+        background-color: var(--green-dark);
+      }
     }
   }
 
@@ -101,5 +148,54 @@
       line-height: convertLineHeight(20, 25);
       color: var(--text-light);
     }
+  }
+}
+
+@keyframes attrsMove {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(calc(-100% - toRem(100)));
+  }
+}
+
+@keyframes attrsBounce {
+  0% {
+    transform: translateY(calc(-100% - toRem(100)));
+  }
+  40% {
+    transform: translateY(toRem(6));
+  }
+  80% {
+    transform: translateY(toRem(-2));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes backdropBounce {
+  0% {
+    transform: translateY(calc(100% + 100px));
+  }
+  40% {
+    transform: translateY(toRem(-14));
+  }
+  80% {
+    transform: translateY(toRem(2));
+  }
+  100% {
+    transform: translateY(toRem(0));
+  }
+}
+
+@keyframes backdropUnhover {
+  0% {
+    transform: translateY(toRem(0));
+  }
+  100% {
+    transform: translateY(calc(100% + toRem(1400)));
   }
 }

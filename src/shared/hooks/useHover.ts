@@ -11,8 +11,6 @@ function useHover<T extends HTMLElement>(): [MutableRefObject<T | null>, boolean
   }
   useEffect(() => {
     const node = ref.current
-    console.log('asd')
-
     if (node) {
       node.addEventListener('mouseenter', onMouseOverHandler)
       node.addEventListener('mouseleave', onMouseOutHandler)

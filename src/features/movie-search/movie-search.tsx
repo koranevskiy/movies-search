@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useClickAwayListener, useDebounce } from '../../shared/hooks'
+import React, { useState } from 'react'
+import { useDebounce } from '../../shared/hooks'
+import { DiscoverService } from '../../shared/services/discover'
 import { SearchBar } from '../../shared/ui/search-bar'
 import { IMovieSearch } from './movie-search.interfaces'
 import useRecommendedMovies from './movie-search.lib'
-import RecommendedMovies from './recommended-movies'
-import styles from './style.module.scss'
 
-const MovieSearch: React.FC<IMovieSearch> = ({ value, setValue, movies }) => {
+const MovieSearch: React.FC<IMovieSearch> = ({ movies, setSuitableMovie, setIsSearched }) => {
+  const [value, setValue] = useState('')
   const debouncedValue = useDebounce<string>(value, 300)
-
   const recommendedMovies = useRecommendedMovies(debouncedValue, movies)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [isListVisible, setIsListVisible] = useState(false)
-
-  const ref = useClickAwayListener<HTMLDivElement>({
-    onAwayClick: () => setIsListVisible(false),
-    onInnerClick: () => setIsListVisible(true),
-  })
-
-  useEffect(() => {
-    setIsListVisible(!!movies.length)
-  }, [movies.length])
+  const onSeacrhMoviesHandler = async (title?: string) => {
+    setIsLoading(true)
+    const searchedMovies = await DiscoverService.searchMovies(title || value, movies, 1000)
+    setSuitableMovie(searchedMovies)
+    setIsLoading(false)
+    setIsSearched(!!value.trim())
+  }
 
   return (
-    <div className={styles.wrapper} ref={ref}>
-      <SearchBar placeholder="Seacrh" btnText="Search" setValue={setValue} value={value}>
-        <RecommendedMovies movies={recommendedMovies} isListVisible={isListVisible} />
-      </SearchBar>
-    </div>
+    <SearchBar
+      placeholder="Seacrh"
+      btnText="Search"
+      setValue={setValue}
+      value={value}
+      onActionDone={onSeacrhMoviesHandler}
+      btnDisabled={isLoading}
+      disabled={isLoading}
+      listItems={recommendedMovies}
+    />
   )
 }
 

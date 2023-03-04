@@ -1,4 +1,4 @@
-import { IAssets } from './discover.interfaces'
+import { IAssets, IMovie } from './discover.interfaces'
 
 class DiscoverService {
   private static readonly baseUrl = 'http://127.0.0.1:5173/'
@@ -17,6 +17,17 @@ class DiscoverService {
       })),
     }
     return serializedData
+  }
+
+  static async searchMovies(name: string, movies: IMovie[], delay: number): Promise<IMovie[]> {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        const recMovies = movies.filter(({ title }) =>
+          title.toLowerCase().includes(name.toLowerCase().trim()),
+        )
+        resolve(recMovies)
+      }, delay)
+    })
   }
 }
 

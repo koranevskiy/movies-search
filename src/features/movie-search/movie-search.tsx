@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { useDebounce } from '../../shared/hooks'
 import { DiscoverService } from '../../shared/services/discover'
 import { SearchBar } from '../../shared/ui/search-bar'
@@ -11,13 +11,21 @@ const MovieSearch: React.FC<IMovieSearch> = ({ movies, setSuitableMovie, setIsSe
   const recommendedMovies = useRecommendedMovies(debouncedValue, movies)
   const [isLoading, setIsLoading] = useState(false)
 
-  const onSeacrhMoviesHandler = async (title?: string) => {
-    setIsLoading(true)
-    const searchedMovies = await DiscoverService.searchMovies(title || value, movies, 1000)
-    setSuitableMovie(searchedMovies)
-    setIsLoading(false)
-    setIsSearched(!!value.trim())
-  }
+  const onSeacrhMoviesHandler = useCallback(
+    async (title?: string) => {
+      setIsLoading(true)
+      const searchedMovies = await DiscoverService.searchMovies(title || value, movies, 1000)
+      setSuitableMovie(searchedMovies)
+      setIsLoading(false)
+      setIsSearched(!!value.trim())
+    },
+    [movies, setIsSearched, setSuitableMovie, value],
+  )
+
+  useEffect(() => {
+    if (!debouncedValue || value) return
+    onSeacrhMoviesHandler('')
+  }, [debouncedValue, onSeacrhMoviesHandler, value])
 
   return (
     <SearchBar
@@ -33,4 +41,4 @@ const MovieSearch: React.FC<IMovieSearch> = ({ movies, setSuitableMovie, setIsSe
   )
 }
 
-export default MovieSearch
+export default memo(MovieSearch)

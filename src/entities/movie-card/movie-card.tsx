@@ -8,8 +8,19 @@ import { ReactComponent as PlayIcon } from '../../assets/icons/play.svg'
 const getGenersString = (geners: string[]) => geners.join(', ')
 
 const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
-  const { poster, is_new, imdb_rate, title, country, year, length, num_seasons, min_age, genres } =
-    movie
+  const {
+    poster,
+    is_new,
+    imdb_rate,
+    title,
+    country,
+    year,
+    length,
+    num_seasons,
+    min_age,
+    genres,
+    keyframe,
+  } = movie
 
   const [ref, isHovered] = useHover<HTMLDivElement>()
   const attrRef = useRef<HTMLDivElement>(null)
@@ -17,11 +28,13 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
 
   const properties = [country, year, `${length / 60} min`, `${num_seasons} seasons`, `${min_age}+`]
   const backdropStyles = isHovered ? `${styles.backdrop} ${styles.backOpacity}` : styles.backdrop
+  const keyframeStyles = isHovered ? `${styles.keyframe} ${styles.keyframeHover}` : styles.keyframe
 
   return (
     <div className={styles.wrapper} ref={ref}>
       <div className={styles.banner}>
         <img src={poster} alt="Poster" className={styles.img} />
+        <img src={keyframe} alt="Keyframe" className={keyframeStyles} />
         <div className={backdropStyles} />
         <CSSTransition
           in={isHovered}

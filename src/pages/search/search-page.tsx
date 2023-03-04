@@ -1,39 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { MovieSearch } from '../../features/movie-search'
-import { DiscoverService, IAssets, IMovie } from '../../shared/services/discover'
+import { IMovie } from '../../shared/services/discover'
 import CrossFade from '../../shared/ui/cross-fade/cross-fade'
 import styles from './style.module.scss'
 import { Header } from '../../widgets/header'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
 import { Keyboard, Mousewheel } from 'swiper'
 import { MovieCard } from '../../entities/movie-card'
 import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/navigation'
+import { useAssets } from './lib'
 
 const SearchPage: React.FC = () => {
-  const [assets, setAssets] = useState<IAssets>({
-    backgrounds: [],
-    items: [],
-  })
+  const { assets } = useAssets()
 
   const [suitableMovies, setSuitableMovies] = useState<IMovie[]>([])
   const [slidesPerView, setSlidesPerView] = useState(4)
 
   const [isSearched, setIsSearched] = useState(false)
   const pageRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const data = await DiscoverService.getAssets()
-        setAssets(data)
-      } catch (e) {
-        console.log(e)
-      }
-    })()
-  }, [])
 
   useEffect(() => {
     const onResizeHandler = () => {

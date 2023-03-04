@@ -21,7 +21,6 @@
   }
   .userBtn {
     position: relative;
-    background-color: rgba(var(--bg-alpha), 0.1);
     &::before {
       content: '';
       position: absolute;

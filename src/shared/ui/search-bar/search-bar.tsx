@@ -6,10 +6,10 @@ import { ReactComponent as SearchIcon } from '../../../assets/icons/search-green
 import { useHover } from '../../hooks'
 import useClickAwayListener from '../../hooks/useClickAwayListener'
 
-const getCloseBtnStyles = (isVisible: boolean) => {
-  const btnStyles = [styles.inputIcon]
-  if (isVisible) btnStyles.push(styles.inputIconActive)
-  return btnStyles.join(' ')
+const getStyles = (condition: boolean, defaultStyle: string, conditionStyle: string) => {
+  const itemStyles = [defaultStyle]
+  if (condition) itemStyles.push(conditionStyle)
+  return itemStyles.join(' ')
 }
 
 const getInputStyles = (isHover: boolean, isFocus: boolean, className: string) => {
@@ -32,12 +32,14 @@ const SearchBar: React.FC<ISearchBar> = ({
   const [divRef, isHover] = useHover<HTMLDivElement>()
   const inputRef = useRef<null | HTMLInputElement>(null)
   const [isListVisible, setIsListVisible] = useState(false)
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null)
   const listRef = useClickAwayListener<HTMLDivElement>({
     onAwayClick: () => setIsListVisible(false),
   })
 
   const onChangeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
+    setSelectedItemIndex(null)
   }
 
   const onResetInputHandler = () => {
@@ -56,7 +58,35 @@ const SearchBar: React.FC<ISearchBar> = ({
   const onListItemClickHandler = (title: string) => {
     setValue(title)
     setIsListVisible(false)
+    setSelectedItemIndex(null)
     onActionDone(title)
+  }
+
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyDownCallbacks = {
+      Enter: () => {
+        onListItemClickHandler(
+          selectedItemIndex === null ? value : listItems[selectedItemIndex].title,
+        )
+      },
+      ArrowUp: () => {
+        if (!listItems.length) return
+        setSelectedItemIndex(
+          selectedItemIndex === null || selectedItemIndex === 0
+            ? listItems.length - 1
+            : selectedItemIndex - 1,
+        )
+      },
+      ArrowDown: () => {
+        if (!listItems.length) return
+        setSelectedItemIndex(
+          selectedItemIndex === null || selectedItemIndex === listItems.length - 1
+            ? 0
+            : selectedItemIndex + 1,
+        )
+      },
+    }[e.key as 'Enter']
+    keyDownCallbacks?.()
   }
 
   const isResetBtnVisible = !!value.length
@@ -79,18 +109,19 @@ const SearchBar: React.FC<ISearchBar> = ({
           onClick={() => setIsListVisible(true)}
           onFocus={onFocusInputHandler}
           onBlur={onBlurInputHandler}
+          onKeyDown={onKeyDownHandler}
           {...rest}
         />
         <CloseIcon
-          className={getCloseBtnStyles(isResetBtnVisible)}
+          className={getStyles(isResetBtnVisible, styles.inputIcon, styles.inputIconActive)}
           onMouseDown={onResetInputHandler}
         />
         {isListVisible && (
           <ul className={styles.list}>
-            {listItems.map(({ title, id }) => (
+            {listItems.map(({ title, id }, index) => (
               <li
                 key={id}
-                className={styles.listItem}
+                className={getStyles(selectedItemIndex === index, styles.listItem, styles.selected)}
                 onClick={() => onListItemClickHandler(title)}
               >
                 {title}
